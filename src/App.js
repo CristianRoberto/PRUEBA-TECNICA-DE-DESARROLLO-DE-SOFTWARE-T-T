@@ -1,25 +1,71 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
+import NuevoUsuarioForm from './components/NuevoUsuarioForm';
+
+import UserTable from './components/UserTable';
+
+import Autor from './components/Autor';
+import './App.scss';
+
+
+const App = () => {
+  const [editarModalIsOpen, setEditarModalIsOpen] = useState(false);
+
+  const openEditarModal = () => {
+    setEditarModalIsOpen(true);
+  };
+
+  const closeEditarModal = () => {
+    setEditarModalIsOpen(false);
+  };
+
+  const users = [
+    {
+      usuario: 'jdoe',
+      nombres: 'John',
+      apellidos: 'Doe',
+      departamento: 'Ventas',
+      cargo: 'Gerente',
+      email: 'jdoe@example.com'
+    },
+    {
+      usuario: 'asmith',
+      nombres: 'Anna',
+      apellidos: 'Smith',
+      departamento: 'Marketing',
+      cargo: 'Especialista',
+      email: 'asmith@example.com'
+    }
+  ];
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>Modulo de Administración</p>
+      <h1>Administración de Usuarios</h1>
+      <div className="controls">
+        <div className="controls__inputs">
+          <select>
+            <option value="">Seleccionar Departamento</option>
+            <option value="ventas">Ventas</option>
+            <option value="marketing">Marketing</option>
+          </select>
+          <select>
+            <option value="">Seleccionar Cargo</option>
+            <option value="gerente">Gerente</option>
+            <option value="especialista">Especialista</option>
+          </select>
+        </div>
+        <button className="controls__button" onClick={openEditarModal}>Crear Nuevo Usuario</button>
+      </div>
+      {editarModalIsOpen && <NuevoUsuarioForm onClose={closeEditarModal} />}
+    
+    
+       <UserTable users={users} />
+       <Autor />
+
+
+    
     </div>
   );
-}
+};
 
 export default App;

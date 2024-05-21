@@ -1,0 +1,48 @@
+.user-table {
+    margin: 20px;
+    &__table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+  
+    &__thead {
+      background-color: #f4f4f4;
+  
+      th {
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+    }
+  
+    &__tbody {
+      tr {
+        &:nth-child(even) {
+          background-color: #f9f9f9;
+        }
+        &:hover {
+          background-color: #f1f1f1;
+        }
+      }
+  
+      td {
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+    }
+  
+    &__button {
+      margin: 0 5px;
+      padding: 5px 10px;
+      border: none;
+      cursor: pointer;
+      &--edit {
+        background-color: #4caf50;
+        color: white;
+      }
+      &--delete {
+        background-color: #f44336;
+        color: white;
+      }
+    }
+  }
+  
